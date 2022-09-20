@@ -143,4 +143,21 @@ heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *ht = NULL, *ret;
 
-
+	if (!root)
+		return (NULL);
+	ht = calloc(1, sizeof(heap_t));
+	ht->n = value;
+	if (!*root)
+	{
+		*root = ht;
+		return (ht);
+	}
+	insert(root, ht);
+	while (ht->parent && ht->n > ht->parent->n)
+	{
+		ret = swap(ht->parent, ht);
+		if (ret)
+			*root = ret;
+	}
+	return (ht);
+}
