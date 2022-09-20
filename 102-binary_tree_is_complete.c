@@ -86,4 +86,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	{
 		if (binary_tree_is_complete(l) && binary_tree_is_perfect(r))
 			return (1);
-
+	}
+	return (0);
+}
